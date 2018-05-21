@@ -1,14 +1,17 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "strictNullChecks": true,
+    "noImplicitThis": true,
+    "downlevelIteration": true,
     "target": "es5",
+    "types": ["node", "cucumber", "chai", "jasmine"],
+    "outDir": "./typeScript",
     "typeRoots": [
       "node_modules/@types"
     ],
@@ -16,5 +19,8 @@
       "es2017",
       "dom"
     ]
-  }
+  },
+  "include": [
+    "./e2e/steps"
+  ]
 }

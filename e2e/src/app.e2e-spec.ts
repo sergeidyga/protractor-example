@@ -1,6 +1,6 @@
-import { AppPage } from './app.po';
+import { AppPage } from '../pages/common.po';
 
-describe('workspace-project App', () => {
+describe('Careers page', () => {
   let page: AppPage;
 
   beforeEach(() => {
