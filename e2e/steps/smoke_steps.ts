@@ -21,8 +21,6 @@ Then(/^page title is "(.*)"$/, async (title) => {
 });
 
 Then(/^heading text is displayed$/, async () => {
-  // const text = await careersPo.getWelcomeText();
-  const t = await driver.getText($('.section--padding-normal .title h1'));
-  await console.log(t);
+  const t = await careersPo.getWelcomeText();
   await expect(t).not.to.be.empty;
 });

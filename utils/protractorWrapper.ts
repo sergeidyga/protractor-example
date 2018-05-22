@@ -1,4 +1,4 @@
-import {$, browser, by, element} from 'protractor';
+import {$, browser, by, element, ElementFinder} from 'protractor';
 import {getLogger} from 'log4js';
 import {WebElement, WebElementPromise} from 'selenium-webdriver';
 import {setDefaultTimeout} from 'cucumber';
@@ -29,18 +29,24 @@ export class ProtractorWrapper {
     browser.get(url);
   }
 
-  getText(el: WebElement) {
-    log.info(`Getting ${JSON.stringify(el)}`);
-    return el.getText().then(t => {
-      log.info(t);
-      return t;
+  getText(el: ElementFinder) {
+    return el.getText().then(text => {
+      log.info(`Getting text. Text is "${text}"`);
+      return text;
     });
   }
 
   getTitle() {
-    return browser.getTitle().then(t => {
-      log.info(`Getting page title. Title is "${t}"`);
-      return t;
+    return browser.getTitle().then(title => {
+      log.info(`Getting page title. Title is "${title}"`);
+      return title;
+    });
+  }
+
+  mouseHoverAndGetState(elToHover: ElementFinder, elToCheck: ElementFinder) {
+    browser.actions().mouseMove(elToHover).perform().then(() => {
+      log.info('Hover mouse to get if element is hidden');
+      return elToCheck.getCssValue('hidden');
     });
   }
 

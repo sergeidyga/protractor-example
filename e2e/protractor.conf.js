@@ -19,7 +19,7 @@ exports.config = {
   frameworkPath: require.resolve('protractor-cucumber-framework'),
   cucumberOpts: {
     require: ['../typeScript/e2e/steps/*.js'],
-    strict: true,
+    strict: false,
     compiler: 'ts:ts-node/register',
     format: ['json:reports/cucumber_report.json', 'snippets'],
     ignoreUncaughtExceptions: false
