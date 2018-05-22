@@ -8,17 +8,7 @@ yarn global add protractor cucumber webdriver-manager
 yarn
 ```
 
-Run only once to update webdriver-manager repos:
-```
-yarn run webdriver-update
-```
-
-Start the webdriver:
-```
-webdriver-manager start
-```
-
 Run the tests:
 ```
-protractor cucumberConf.js
+yarn test
 ```

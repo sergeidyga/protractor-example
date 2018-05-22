@@ -1,6 +1,8 @@
 const { env } = require('config');
 
 exports.config = {
+  seleniumAddress: 'http://localhost:4444/wd/hub',
+  SELENIUM_PROMISE_MANAGER: false,
   allScriptsTimeout: 11000,
   specs: [
     './features/*.feature'
@@ -16,11 +18,11 @@ exports.config = {
   framework: 'custom',
   frameworkPath: require.resolve('protractor-cucumber-framework'),
   cucumberOpts: {
-    require: ['../typeScript/*.js', './steps/*.js'],
+    require: ['../typeScript/e2e/steps/*.js'],
     strict: true,
     compiler: 'ts:ts-node/register',
-    format: ['snippets:reports/output.txt', 'progress-bar'],
-    ignoreUncaughtExceptions: true
+    format: ['json:reports/cucumber_report.json', 'snippets'],
+    ignoreUncaughtExceptions: false
   },
   onPrepare() {
     require('ts-node').register({

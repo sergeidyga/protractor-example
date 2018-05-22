@@ -1,17 +1,8 @@
-import { browser, by, element } from 'protractor';
+import { $, ElementFinder } from 'protractor';
 import { env } from 'config';
-import { getLogger } from 'log4js';
+import {ProtractorWrapper} from '../../utils/protractorWrapper';
 
-export class AppPage {
-  navigateTo() {
-    const log = getLogger();
-    log.level = 'info';
-    log.info(`Getting ${env.host} page...`);
-    browser.waitForAngularEnabled(false);
-    return browser.get(env.host);
-  }
+const driver = ProtractorWrapper.getInstance();
 
-  getParagraphText() {
-    return element(by.css('app-root h1')).getText();
-  }
+export class CommonPo {
 }
