@@ -1,26 +1,19 @@
-import {$, browser} from 'protractor';
 import {Then} from 'cucumber';
-import * as chai from 'chai';
-import * as chaiAsPromised from 'chai-as-promised';
-import {ProtractorWrapper} from '../../utils/protractorWrapper';
-import {CareersPo} from '../pages/CareersPage/careers.po';
+import {expect} from 'chai';
+import {driver} from '../../utils';
+import {CareersPo} from '../pages';
 
-chai.use(chaiAsPromised);
-
-const expect = chai.expect;
 const careersPo: CareersPo = new CareersPo();
-const driver = ProtractorWrapper.getInstance();
 
 Then(/^I am on "(.*)" page$/, {timeout: 60 * 1000}, async (url) => {
-  browser.waitForAngularEnabled(false);
   await driver.navigateTo(url);
 });
 
 Then(/^page title is "(.*)"$/, async (title) => {
-  expect(await driver.getTitle()).to.equal(title);
+  expect(driver.getTitle()).to.equal(title);
 });
 
 Then(/^heading text is displayed$/, async () => {
-  const t = await careersPo.getWelcomeText();
+  const t = careersPo.getWelcomeText();
   await expect(t).not.to.be.empty;
 });

@@ -1,7 +1,12 @@
 export default {
   env: {
-    host: 'https://www.epam.com/carrers',
+    host: 'https://www.visualcv.com',
     browserName: 'chrome',
-    browserOptions: ['disable-infobars', '--start-maximized', '--headless']
+    browserOptions: ['disable-infobars', '--log-level=3', '--headless', '--disable-extensions']
+  },
+  options: {
+    cucumberDefaultTimeout: 60,
+    waitForAngular: false,
+    logsLevel: 'debug'
   }
 };

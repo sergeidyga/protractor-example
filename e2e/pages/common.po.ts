@@ -1,5 +1,5 @@
-import {$, $$, by, element, ElementFinder} from 'protractor';
-import { env } from 'config';
+import {$$, by, element, ElementFinder} from 'protractor';
+import {env} from 'config';
 import {ProtractorWrapper} from '../../utils/protractorWrapper';
 
 const driver = ProtractorWrapper.getInstance();

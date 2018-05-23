@@ -1,8 +1,7 @@
-import {$, browser, by, element, ElementFinder} from 'protractor';
+import {browser, ElementFinder} from 'protractor';
 import {getLogger} from 'log4js';
-import {WebElement, WebElementPromise} from 'selenium-webdriver';
-import {setDefaultTimeout} from 'cucumber';
 import {env} from 'config';
+
 
 const log = getLogger('protractorWrapper');
 
@@ -16,17 +15,13 @@ export class ProtractorWrapper {
     return ProtractorWrapper.instance;
   }
 
-  constructor() {
-    log.level = 'debug';
+  private constructor() {
     log.debug('ProtractorWrapper initialized');
-    browser.waitForAngularEnabled(false);
-    log.debug(`Property "waitForAngularEnabled" is off`);
-    setDefaultTimeout(60 * 1000);
   }
 
   navigateTo(url: string) {
     log.info(`Getting ${url} page...`);
-    browser.get(url);
+    return browser.get(url);
   }
 
   getText(el: ElementFinder) {
@@ -43,6 +38,7 @@ export class ProtractorWrapper {
     });
   }
 
+  // todo
   mouseHoverAndGetState(elToHover: ElementFinder, elToCheck: ElementFinder) {
     browser.actions().mouseMove(elToHover).perform().then(() => {
       log.info('Hover mouse to get if element is hidden');

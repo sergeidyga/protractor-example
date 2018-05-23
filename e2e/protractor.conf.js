@@ -1,6 +1,8 @@
-const { env } = require('config');
+const {env} = require('config');
+const prepare = require('../typeScript/utils/onPrepare');
 
 exports.config = {
+  logLevel: 'WARN',
   seleniumAddress: 'http://localhost:4444/wd/hub',
   SELENIUM_PROMISE_MANAGER: false,
   allScriptsTimeout: 11000,
@@ -21,12 +23,15 @@ exports.config = {
     require: ['../typeScript/e2e/steps/*.js'],
     strict: false,
     compiler: 'ts:ts-node/register',
-    format: ['json:reports/cucumber_report.json', 'snippets'],
-    ignoreUncaughtExceptions: false
+    format: ['json:reports/cucumber_report.json', 'progress'],
+    ignoreUncaughtExceptions: false,
+    tags: [],
+    dryRun: false
   },
   onPrepare() {
     require('ts-node').register({
       project: require('path').join(__dirname, './tsconfig.e2e.json')
     });
+    prepare.setConfigurations();
   }
 };

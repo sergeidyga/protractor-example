@@ -1,4 +1,4 @@
-import { AppPage } from '../pages/common.po';
+import {AppPage} from '../pages/common.po';
 
 describe('Careers page', () => {
   let page: AppPage;
