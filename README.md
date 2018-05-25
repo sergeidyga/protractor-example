@@ -12,3 +12,9 @@ Run the tests:
 ```
 yarn test
 ```
+
+Debug
+```
+yarn --inspect-brk test
+```
+Then open chrome inspector: Enter _"chrome://inspect/#devices"_ in browser, find the current running target and click “Inspect”

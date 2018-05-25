@@ -1,5 +1,5 @@
 const {env} = require('config');
-const prepare = require('../typeScript/utils/onPrepare');
+const prepare = require('../typeScript/utils/onPrepare')['default'];
 
 exports.config = {
   logLevel: 'WARN',
@@ -7,7 +7,7 @@ exports.config = {
   SELENIUM_PROMISE_MANAGER: false,
   allScriptsTimeout: 11000,
   specs: [
-    './features/*.feature'
+    './features/*/*.feature'
   ],
   capabilities: {
     browserName: env.browserName,
@@ -21,11 +21,11 @@ exports.config = {
   frameworkPath: require.resolve('protractor-cucumber-framework'),
   cucumberOpts: {
     require: ['../typeScript/e2e/steps/*.js'],
-    strict: false,
+    strict: true,
     compiler: 'ts:ts-node/register',
     format: ['json:reports/cucumber_report.json', 'progress'],
-    ignoreUncaughtExceptions: false,
-    tags: [],
+    ignoreUncaughtExceptions: true,
+    tags: ['@Smoke'],
     dryRun: false
   },
   onPrepare() {

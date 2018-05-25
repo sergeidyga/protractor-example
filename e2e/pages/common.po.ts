@@ -1,20 +1,14 @@
-import {$$, by, element, ElementFinder} from 'protractor';
-import {env} from 'config';
-import {ProtractorWrapper} from '../../utils/protractorWrapper';
-
-const driver = ProtractorWrapper.getInstance();
+import {$, ElementFinder} from 'protractor';
+import {driver} from '../../utils';
 
 export class CommonPo {
-  public subList: ElementFinder;
-  public menuItem: ElementFinder;
+  public header: ElementFinder;
 
   constructor() {
-    this.subList = $$('.top-navigation__sub-list-wrapper')[0];
-    this.menuItem = element(by.xpath('(//*[@class = \'top-navigation__link\'][text() = \'\'])'));
+    this.header = $('#app h1');
   }
 
-  getMenuState(menuName: string) {
-    const menu = element(by.xpath(`(//*[@class = \'top-navigation__link\'][text() = \'${menuName}\'])`));
-    return driver.mouseHoverAndGetState(menu, this.subList);
+  getHeaderText() {
+    return driver.getText(this.header);
   }
 }

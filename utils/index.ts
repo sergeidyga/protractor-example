@@ -1,4 +1,5 @@
-import {ProtractorWrapper} from './protractorWrapper';
+import {ProtractorHelper} from './protractorHelper';
 
 export * from './dataContainer';
-export const driver = ProtractorWrapper.getInstance();
+export * from './decorators';
+export const driver = ProtractorHelper.getInstance();

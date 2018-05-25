@@ -9,7 +9,7 @@
     "strictNullChecks": true,
     "noImplicitThis": true,
     "downlevelIteration": true,
-    "target": "es5",
+    "target": "es2017",
     "types": ["node", "cucumber", "chai", "jasmine"],
     "outDir": "./typeScript",
     "typeRoots": [

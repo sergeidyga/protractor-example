@@ -1,2 +1,5 @@
-export * from './common.po';
-export * from './CareersPage/careers.po';
+import {LoginPo} from './LoginPage/login.po';
+import {CommonPo} from './common.po';
+
+export const loginPo = new LoginPo();
+export const commonPo = new CommonPo();
